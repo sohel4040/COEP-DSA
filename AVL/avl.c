@@ -11,25 +11,23 @@ void initAVL(AVL *t)
 int height(AVL t)
 {
     if(!t)
-        return -1;
-
-    int lh = height(t->left);
+          return -1;
     int rh = height(t->right);
-    
+   
+    int lh = height(t->left);
     return lh > rh ? lh+1 : rh+1;
-
 }
+   
 
 void updateBalanceFactor(AVL *t)
 {
-   node* p = *t;
-
+	node* p = *t;
    while(p)
    {
         p->balanceFactor = height(p -> left) - height(p -> right);
         p = p -> parent;    
    }
-}
+
 
 node* adjustImbalance(AVL *t)
 {
@@ -76,7 +74,7 @@ void insertNodeIntoAVL(AVL* t, int data)
     q = NULL;
     p = *t;
 
-    while (p)
+    while(p)
     {
         q = p; 
 
@@ -98,11 +96,11 @@ void insertNodeIntoAVL(AVL* t, int data)
 
     nn->parent = q;
 
-    updateBalanceFactor(&q->parent);
+    updateBalanceFactor(&q);
     node * imb = NULL;
     imb = adjustImbalance(&q);
     
-    while(imb)
+    if(imb)
     {
         if(nn->data < imb->data)
         {
@@ -113,9 +111,20 @@ void insertNodeIntoAVL(AVL* t, int data)
                 else
                     LRRotation(t, imb);
             }
+            if(imb->right)
+            {
+                if(nn->data > imb->right->data)
+                    RLRotation(t, imb);
+            }
         }
         else
         {
+            if(imb->left)
+            {
+                if(nn-> data < imb->left->data)
+                    LRRotation(t, imb);
+            }
+
             if(imb->right)
             {
                 if(nn->data > imb->right->data)
@@ -129,7 +138,7 @@ void insertNodeIntoAVL(AVL* t, int data)
             }
         }
 
-        imb = adjustImbalance(&q->parent);
+        // imb = adjustImbalance(&q->parent);
     }
 
     return;
@@ -224,23 +233,23 @@ void removeNodeIterative(AVL *t, int key)
     }
 
     // node has both childs
-    node *m;
+    node *m, *prev;
 
     m = p -> left;
+    prev = NULL;
 
     while(m -> right)
     {
+        prev = m;
         m = m -> right;
     }
-
     p -> data = m -> data;
-    removeNodeIterative(&(p -> left), p -> data);
 
-    balanceTree(&(p->left), p);
+    // removeNodeIterative(&(p -> left), p -> data);
 
-    
+    // balanceTree(&(p->left), p);
+
     return;
-
 }
 
 void balanceTree(AVL *t, node* nn)
@@ -380,6 +389,6 @@ void inorder(AVL p)
         return;
 
     inorder(p -> left);
-    printf("%d %d\n", p->data, p->balanceFactor);
+    printf("%d %d \n", p->data, p->balanceFactor);
     inorder(p->right);
 }

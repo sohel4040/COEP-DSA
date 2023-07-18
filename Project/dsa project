@@ -1,0 +1,16 @@
+1)  unique id generation + key -> store in database
+2)  use binary search for searching uuid
+3)  Object id Generation : 
+    we dont search by id we search by content
+4)  Object id generation : 
+    Object hash + timestamp
+5)  Do indexing in database : 
+6)  B+ trees for indexing and hashing use
+    select uuid from c++
+    hash uuid and append string 
+5)  generic link list
+6)  attribute and key 
+    type array 
+7)  name -> val associated rahil and we get the object
+    the object id 
+8)  binary search -> instead of B+trees

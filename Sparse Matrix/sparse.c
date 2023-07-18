@@ -269,13 +269,14 @@ int checkIfSymmetric(sparse *s)
 		while( r && c){
 		
 		if(r -> i != c -> i && r -> j != c -> j){
-		if(r-> i == c -> j && r-> j == c -> i && r->data != c->data)
-		{
+			if(r-> i == c -> j && r-> j == c -> i && r->data != c->data)
+			{
 			return 0;
+			}
 		}
-		}
-		r = r->right;
-		c = c->down;
+		
+			r = r->right;
+			c = c->down;
 		}
 	}
 	

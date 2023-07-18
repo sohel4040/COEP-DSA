@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "limits.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "ranges": "c",
+        "span": "c",
+        "avltree.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

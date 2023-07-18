@@ -48,6 +48,7 @@ node* adjustImbalance(AVL *t)
         if((abs(p -> balanceFactor) > 1) && !flag)
         {
             imb = p;
+            // printf("%s\n", imb->data);
             flag = 1;
         }
         p = p -> parent;
@@ -104,14 +105,14 @@ void insertNodeIntoAVL(AVL* t, char *data)
     updateBalanceFactor(&q->parent);
     node * imb = NULL;
     imb = adjustImbalance(&q);
-    
-    while(imb)
+    // printf("%s\n", q->data);
+    if(imb)
     {
-        if(strcmp(imb->data,nn->data))
+        if(imb->balanceFactor >=2)
         {
             if(imb->left)
             {
-                if(strcmp(imb->left->data,nn->data))
+                if(imb->left->balanceFactor >= 1)
                     LLRotation(t, imb);
                 else
                     LRRotation(t, imb);
@@ -121,7 +122,7 @@ void insertNodeIntoAVL(AVL* t, char *data)
         {
             if(imb->right)
             {
-                if(strcmp(nn->data, imb->right->data))
+                if(imb->right->balanceFactor <=-1)
                 {
                     RRRotation(t, imb);
                 }
@@ -132,12 +133,12 @@ void insertNodeIntoAVL(AVL* t, char *data)
             }
         }
 
-        imb = adjustImbalance(&q->parent);
+        // imb = adjustImbalance(&q->parent);
     }
 
     return;
 }
-void removeNodeIterative(AVL *t, char* key)
+void removeNodeIterative(AVL *t, char *key)
 {
 
     if(!(*t))
@@ -152,11 +153,20 @@ void removeNodeIterative(AVL *t, char* key)
             break;
 
         q = p;
+        
+        // printf("node is %s->\n", p->right->data);    
+        // printf("Value is %d\n",strcmp(p -> data, key));
 
         if(strcmp(p -> data, key))
-            p = p -> left;
-        else
+        {
             p = p -> right;
+            printf("Going to right->");
+        }
+        else
+        {
+            p = p -> left;
+            printf("Going to left->");
+        }
     }
 
     if(!p)
@@ -178,6 +188,7 @@ void removeNodeIterative(AVL *t, char* key)
             q -> right = NULL;
         else if(q -> left == p)
             q -> left = NULL;
+        
 
         balanceTree(t,q);
         // if(*t && (*t)->parent == q)
@@ -201,7 +212,7 @@ void removeNodeIterative(AVL *t, char* key)
         else if(q -> left == p)
             q -> left = p -> left;
         
-        balanceTree(t,q);
+        // balanceTree(t,q);
         free(p);
         return;
     }
@@ -239,7 +250,7 @@ void removeNodeIterative(AVL *t, char* key)
     strcpy(p -> data, m -> data);
     removeNodeIterative(&(p -> left), p -> data);
 
-    balanceTree(&(p->left), p);
+    // balanceTree(&(p->left), p);
 
     
     return;
@@ -251,16 +262,18 @@ void balanceTree(AVL *t, node* nn)
     updateBalanceFactor(&nn->parent);
     node * imb = NULL;
     imb = adjustImbalance(&nn);
-        
+    
+    // printf("Imbalance node is %s",imb->data);
     while(imb)
     {
-        if(nn->data < imb->data)
+        if(imb->balanceFactor >=2)
         {
             if(imb->left)
             {
-                if(nn-> data < imb->left->data)
+                if(imb->left->balanceFactor >= 1)
                     LLRotation(t, imb);
                 else
+            // printf("kdfldfldfkd\n");
                     LRRotation(t, imb);
             }
         }
@@ -383,6 +396,9 @@ void inorder(AVL p)
         return;
 
     inorder(p -> left);
-    printf("%s %d\n", p->data, p->balanceFactor);
+    if(p->parent)
+        printf("%s %d -> %s\n", p->data, p->balanceFactor, p->parent->data);
+    else
+        printf("%s %d -> NULL\n", p->data, p->balanceFactor);
     inorder(p->right);
 }

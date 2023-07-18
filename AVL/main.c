@@ -5,24 +5,21 @@ int main()
 {
     AVL t;
     initAVL(&t);
-    insertNodeIntoAVL(&t, 10);
-    insertNodeIntoAVL(&t, 20);
-    insertNodeIntoAVL(&t, 30);
-    insertNodeIntoAVL(&t, 40);
-    insertNodeIntoAVL(&t, 50);
-    insertNodeIntoAVL(&t, 70);
-    insertNodeIntoAVL(&t, 80);
-    insertNodeIntoAVL(&t, 90);
-    insertNodeIntoAVL(&t, 5);
+    insertNodeIntoAVL(&t, 1);
     insertNodeIntoAVL(&t, 2);
     insertNodeIntoAVL(&t, 3);
+    insertNodeIntoAVL(&t, 4);
+    insertNodeIntoAVL(&t, 5);
     insertNodeIntoAVL(&t, 6);
-    insertNodeIntoAVL(&t, 200);
-    insertNodeIntoAVL(&t, 300);
+    insertNodeIntoAVL(&t, 7);
+    insertNodeIntoAVL(&t, 8);
+    insertNodeIntoAVL(&t, 9);
 
 
 
-    inorder(t);
+
+
+    inorder(t); printf("\n");
     printf("\n");
 
     // removeNodeIterative(&t, 10);
@@ -32,12 +29,40 @@ int main()
     // printf("\n");
 
 
-    // removeNodeIterative(&t, 20);
+    // removeNodeIterative(&t, 4);
     // printf("Root node is : %d\n",t->data);
-    // printf("After deletion of 20 : \n");
-    // inorder(t);
-    // printf("\n");
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
 
+    // removeNodeIterative(&t, 3);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
+
+    // removeNodeIterative(&t, 6);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
+    // // printf("\n");
+
+    // removeNodeIterative(&t, 5);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
+    // removeNodeIterative(&t, 2);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
+
+    // removeNodeIterative(&t, 1);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
+
+    // removeNodeIterative(&t, 8);
+    // printf("Root node is : %d\n",t->data);
+    // // printf("After deletion of 20 : \n");
+    // inorder(t); printf("\n");
     // removeNodeIterative(&t, 60);
     // printf("Root node is : %d\n",t->data);
     // printf("After deletion of 60 : \n");
@@ -62,10 +87,10 @@ int main()
     // inorder(t);
     // printf("\n");
 
-    destroyTree(&t);
-    printf("Tree has been destroyed successfully\n");
-    inorder(t);
-    printf("\n");
+    // destroyTree(&t);
+    // printf("Tree has been destroyed successfully\n");
+    // inorder(t); printf("\n");
+    // printf("\n");
 
     return 0;
 }

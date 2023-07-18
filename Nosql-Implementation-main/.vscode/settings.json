@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "cipher.h": "c",
+        "userhashmap.h": "c",
+        "document.h": "c",
+        "documenthashmap.h": "c",
+        "type_traits": "c",
+        "cstdlib": "c",
+        "globals.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "nosql.h": "c",
+        "ioctl.h": "c"
+    }
+}

@@ -1,0 +1,141 @@
+This is the Manual Page for NoSQL implementation project using C language.
+
+Available Data-Types:
+---------------------
+    - INTEGER
+    - DOUBLE
+    - BOOLEAN
+    - CHARACTER
+    - STRING
+
+Syntax and Symantics:
+----------------------
+        The program follows a very specific syntax designed for optimal user experience. The data types would be automatically parsed based on the user's input type, thus there would be no need for the user to input the Data-Types manually.
+
+    SYNTAX:
+        - INTEGER
+            <SYNTAX> key:(1+2+3+4+5+6+7+8+9+0)*
+            for the value to be an INTEGER the value should consists of only decimal number
+        - DOUBLE
+            <SYNTAX> key:(1+2+3+4+5+6+7+8+9+0)* . (1+2+3+4+5+6+7+8+9+0)*
+            for the value to be an DOUBLE the value should consists of only decimal number AND at least one '.' (period)
+
+        - STRING
+            <SYNTAX> key:"value"
+            for the value to be an STRING, the value can contain any characters from a-z, A-Z, 0-9 and special characters. The only rule here is that the string must be enclosed withing double quotes.
+
+        - CHARACTER
+            <SYNTAX> key:'value'
+            for the value to be a CHARACTER, the value must contain one and only one CHARACTER, also it should be enclosed by single quotes.
+
+        - BOOLEAN
+            <SYNTAX> key:(T + F)
+            for the value to be a BOOLEAN, it must be a single character either T or F.
+            These characters SHOULD NOT BE enclosed in any quotes.
+
+Available Commands:
+-------------------
+
+- login:
+           Used to invoke the login procedure.
+           On usage of this command the terminal will be cleared and user will be redirected to a login page.
+           <SYNTAX> => `login`
+
+- logout:
+           Used to logout of the current session safely.
+           If user doesn't use logout to quit, there might be some losses of the unsaved recent data, hence it is recommended for the user to logout.
+           <SYNTAX> => `logout`
+- ls users:
+           Used to list all the users that have made account in the database.
+           This command is made for users who might forget their usernames and want to access the list
+           <SYNTAX> => `ls users`
+           
+- ls collections:
+           List all the available collections for the current user.
+           To use this command, the user must be logged in.
+           <SYNTAX> => `ls collections` OR `ls cols`
+
+- ls documents:
+           Used to list all the documents in the users current collection
+           For this command to work, the user must have already selected a collection.
+           <SYNTAX> => `ls documents` or `ls docs`
+           
+- use document:
+           Used to select a particular document with document name provided by the user.
+           A document needs to be selected before performing CRUD operations.
+           All the CRUD operations will occur on the last selected document.
+           <SYNTAX> => `use document DOCUMENT_NAME`
+           
+- use collection:
+           Used to select a particular collection with COLLECTION_NAME provided by the user.
+           A collection must be selected before selecting a document.
+           All the newly created documents will be saved in the last selected collection.
+           <SYNTAX> => `use collection COLLECTION_NAME`
+
+- create user: 
+           Used to create a Unique User by username provided by the user.
+           The user must be looged in before accessing the database.
+           There cant be multiple users with the same username
+           <SYNTAX> => `create user USER_NAME`
+
+- create collection: 
+           Used to create a Unique collection by collectionname provided by the user.
+           The user must be looged in before accessing the database
+           There cant be multiple collections with the same username
+           <SYNTAX> => `create collection COLLECTION_NAME`
+
+- create document: 
+           Used to create a Unique document by documentname provided by the user.
+           The user must be looged in before accessing the database.
+           There cant be multiple users with the same document
+           <SYNTAX> => `create document DOCUMENT_NAME` 
+
+- Delete user: 
+           Used to delete a user by authenticating the user.
+           <SYNTAX> => `rm user USER_NAME` 
+
+- Delete col: 
+           Used to delete a collection by authenticating the user.
+           <SYNTAX> => `rm col COLLECTION_NAME` 
+
+- Delete document: 
+           Used to delete a document by authenticating the user.
+           <SYNTAX> => `rm docs DOCUMENT_NAME` 
+
+- Delete data: 
+           Used to delete a data in document.
+           <SYNTAX> => `rm field KEY` 
+
+- Export user: 
+           Used to export the data in JSON format
+           <SYNTAX> => `export user` 
+
+- Export collection: 
+           Used to export the speific collection in JSON format.You must have called 'use collection' command for exporting the collection.
+           <SYNTAX> => `export col COLLECTION_NAME`
+
+- Export document: 
+           Used to export the speific document in JSON format.You must have called 'use document' command for exporting the document.
+           <SYNTAX> => `export document`
+
+- Update document:
+           Used to update the data in the document.You must have called the 'use document' command for updating the document.
+           We can update multiple keys in a document.
+            <SYNTAX> => `update doc KEY:VALUE`
+
+- Clear:
+           Used to clear the screen.
+
+- Quit: 
+           Used to get out from the database.
+
+- Open Document:
+           Used to view the contents of the document.There must be a document already created for using this command
+           <SYNTAX> => `open doc DOCUMENT_NAME`
+- Current User:
+            Used to get the current user.
+            <SYNTAX> => 'whoami'
+            
+- man:
+           Used to Invoke the Manual Page instruction- man:
+           Used to Invoke the Manual Page instruction
